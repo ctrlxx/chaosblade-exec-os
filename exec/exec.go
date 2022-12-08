@@ -49,7 +49,7 @@ func Destroy(ctx context.Context, c spec.Channel, action string) *spec.Response 
 	ps, _ := cl.GetPidsByProcessName("chaos_os", ctx)
 	pids = append(ps, pids...)
 	if pids == nil || len(pids) == 0 {
-		sprintf := fmt.Sprintf("destory experiment failed, cannot get the chaos_os program")
+		sprintf := fmt.Sprintf("destroy experiment failed, cannot get the chaos_os program")
 		return spec.ReturnFail(spec.OsCmdExecFailed, sprintf)
 	}
 	return cl.Run(ctx, "kill", fmt.Sprintf(`-9 %s`, strings.Join(pids, " ")))
